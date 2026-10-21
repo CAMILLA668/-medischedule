@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
 
-            $table->foreign('speciality_id')
-                ->constrained('specialities')
-                ->onDelete('cascade');
+            $table->foreignId('specialty_id')
+                ->constrained('specialties')
+                ->restrictOnDelete();
 
             $table->string('name');
-            $table->char('crm', 20)->unique();
+            $table->string('crm', 20)->unique();
             $table->char('phone', 11);
-            $table->times('work_start_time');
-            $table->times('work_end_time');
+            $table->time('work_start_time');
+            $table->time('work_end_time');
             $table->boolean('is_active')->default(true);
-            $table->time('slot_duration');
+            $table->unsignedSmallInteger('slot_duration');
             $table->timestamps();
         });
     }
