@@ -21,7 +21,7 @@ class doctors extends Model
 
     public function specialty(): BelongsTo
     {
-        return $this->belongsTo(specialty::class);
+    return $this->belongsTo(Specialty::class);
     }
 
     public function appointment(): HasMany

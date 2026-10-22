@@ -26,7 +26,22 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password'          => 'hashed',
+            'status'            => 'boolean',
         ];
+    }
+
+    protected $fillable = [
+        'role',
+        'cpf',
+        'phone',
+        'status',
+        'email',
+        'password'
+    ]
+
+    public function appointment(): hasMany
+    {
+        return $this->hasMany(appointment::class);
     }
 }
