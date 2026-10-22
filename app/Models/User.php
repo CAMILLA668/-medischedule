@@ -37,11 +37,11 @@ class User extends Authenticatable
         'phone',
         'status',
         'email',
-        'password'
-    ]
+        'password',
+    ];
 
     public function appointment(): hasMany
     {
-        return $this->hasMany(appointment::class);
+        return $this->hasMany(Appointment::class);
     }
 }

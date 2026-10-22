@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\doctors;
-use App\Models\specialtie;
+use App\Models\Doctor;
+use App\Models\Specialty;
 
 class DoctorSeeder extends Seeder
 {
@@ -14,12 +14,12 @@ class DoctorSeeder extends Seeder
      */
     public function run(): void
     {
-        $cadiology = Specialtie::where(
+        $cadiology = Specialty::where(
             'name',
             'Cardiologia'
         )->firstOrFail();
 
-        $dermatology = Specialtie::where(
+        $dermatology = Specialty::where(
             'name',
             'Dermatologia'
         )->firstOrFail();
@@ -28,25 +28,25 @@ class DoctorSeeder extends Seeder
             ['name' => 'Maria Ferreira'],
             [
                 'specialty_id'      => $cadiology->id,
-                'crm'               => 123456,
-                'phone'             => 21992531496,
-                'work_start_time'   => now()->addDays(7)->setTime(18, 0),
-                'work_end_time'     => now()->addDays(7)->setTime(21, 0),
-                'slot_duration'     => 
+                'crm'               => '123456',
+                'phone'             => '21992531496',
+                'work_start_time'   => now(),
+                'work_end_time'     => now(),
+                'slot_duration'     => 30,
                 'is_active'         => true, 
 
             ]
         );
 
-        Dctor::updateOrCreate(
+        Doctor::updateOrCreate(
             ['name' => 'Severino Cunha'],
             [
                 'specialty_id'      => $dermatology->id,
-                'crm'               => 987654,
-                'phone'             => 21998752147
-                'work_start_time'   => now()->addDays(5)->setTime(19, 0),
-                'work_end_time'     => now()->addDays(5)->setTime(15, 0),
-                'slot_duration'     => 
+                'crm'               => '987654',
+                'phone'             => '21998752147',
+                'work_start_time'   => now(),
+                'work_end_time'     => now(),
+                'slot_duration'     => 30,
                 'is_active'         => false,
             ]
         );
